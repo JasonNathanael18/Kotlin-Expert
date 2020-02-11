@@ -1,6 +1,6 @@
 package id.jason.kotlinexpert.adapter
 
-import android.content.Intent
+import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -9,12 +9,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import id.jason.kotlinexpert.model.League
 import id.jason.kotlinexpert.ui.ItemLeagueUI
+import id.jason.kotlinexpert.view.LeagueDetailActivity
 import org.jetbrains.anko.AnkoContext
+import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
 
-class LeagueViewHolderAdapter(private val listLeague: ArrayList<League>) :
+class LeagueViewHolderAdapter(
+    private val listLeague: ArrayList<League>,
+    var context: Context
+) :
     RecyclerView.Adapter<LeagueViewHolderAdapter.LeagueViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
-        return LeagueViewHolder(ItemLeagueUI().createView(AnkoContext.create(parent.context, parent)))
+        return LeagueViewHolder(
+            ItemLeagueUI().createView(
+                AnkoContext.create(
+                    parent.context,
+                    parent
+                )
+            )
+        )
     }
 
     override fun getItemCount(): Int = listLeague.size
@@ -25,27 +39,25 @@ class LeagueViewHolderAdapter(private val listLeague: ArrayList<League>) :
     }
 
     inner class LeagueViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var tvLeagueName: TextView = itemView.findViewById(ItemLeagueUI.leagueName)
-        var ivLeagueBadge: ImageView = itemView.findViewById(ItemLeagueUI.leaguePhoto)
+        private val tvLeagueName: TextView = itemView.findViewById(ItemLeagueUI.leagueName)
+        private val ivLeagueBadge: ImageView = itemView.findViewById(ItemLeagueUI.leaguePhoto)
 
         fun setView(league: League) {
             Glide.with(itemView.context)
-                .load(league.showPhoto)
+                .load(league.leagueBadge)
                 .into(ivLeagueBadge)
             tvLeagueName.text = league.leagueName
 
-//            itemView.setOnClickListener {
-//                val movieSend = Shows(
-//                    shows.showTitle,
-//                    shows.showDate,
-//                    shows.showDesc,
-//                    shows.showRating,
-//                    shows.showPhoto
-//                )
-//                val intentToDetail = Intent(itemView.context, ShowDetailActivity::class.java)
-//                intentToDetail.putExtra(ShowDetailActivity.EXTRA_SHOWS, movieSend)
-//                itemView.context.startActivity(intentToDetail)
-//            }
+            itemView.setOnClickListener {
+                val leagueSend = League(
+                    league.leagueName,
+                    league.leagueId,
+                    league.leagueDescription,
+                    league.leagueBadge
+                )
+                context.toast("Showing ${league.leagueName} detail")
+                itemView.context.startActivity<LeagueDetailActivity>(LeagueDetailActivity.EXTRA_LEAGUE to leagueSend)
+            }
         }
     }
 }

@@ -8,5 +8,5 @@ data class League(
     var leagueName: String,
     var leagueId: String,
     var leagueDescription: String,
-    var showPhoto: Int
+    var leagueBadge: Int
 ):Parcelable

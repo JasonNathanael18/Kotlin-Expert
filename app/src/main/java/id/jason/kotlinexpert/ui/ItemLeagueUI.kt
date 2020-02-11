@@ -1,32 +1,42 @@
 package id.jason.kotlinexpert.ui
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import org.jetbrains.anko.*
 
-class ItemLeagueUI: AnkoComponent<ViewGroup> {
+class ItemLeagueUI : AnkoComponent<ViewGroup> {
     companion object {
-        val leagueName = 1
-        val leagueDesc = 2
-        val leaguePhoto = 3
+        const val leagueName = 1
+        const val leaguePhoto = 2
     }
-    override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui){
+
+    override fun createView(ui: AnkoContext<ViewGroup>): View = with(ui) {
         verticalLayout {
 
-            lparams(wrapContent, wrapContent)
-            padding = dip(16)
+            lparams(matchParent, wrapContent)
+            {
+                margin = dip(4)
+            }
+            gravity = Gravity.CENTER
+            padding = dip(8)
+            background = ColorDrawable(Color.parseColor("#32407b"))
 
-            imageView().lparams(width = matchParent){
+            imageView {
                 id = leaguePhoto
+                layoutParams = LinearLayout.LayoutParams(dip(100), dip(100))
                 padding = dip(20)
-                margin = dip(15)
             }
 
-            textView{
+            textView {
                 id = leagueName
                 layoutParams = LinearLayout.LayoutParams(matchParent, wrapContent)
                 textSize = 14f
+                gravity = Gravity.CENTER
+                textColor = Color.WHITE
             }
         }
     }
