@@ -28,9 +28,16 @@ class LeagueDetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar!!.title = resources.getString(R.string.actionbar_detail_title)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         leagueDetail = intent.getParcelableExtra(EXTRA_LEAGUE) as League
         generateView()
         setData()
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 
     private fun generateView() {
