@@ -21,8 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        supportActionBar!!.title = resources.getString(R.string.actionbar_home_title)
-        //setContentView(R.layout.activity_main)
+        supportActionBar?.title = resources.getString(R.string.actionbar_home_title)
 
         prepareData()
         addData()
