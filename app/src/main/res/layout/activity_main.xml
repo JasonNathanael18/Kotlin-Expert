@@ -7,4 +7,10 @@
     tools:context=".view.MainActivity"
     android:gravity="center">
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:listitem="@layout/item_league_list" />
+
 </LinearLayout>

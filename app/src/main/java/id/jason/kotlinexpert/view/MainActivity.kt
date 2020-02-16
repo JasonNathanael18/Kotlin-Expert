@@ -7,9 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import id.jason.kotlinexpert.R
 import id.jason.kotlinexpert.adapter.LeagueViewHolderAdapter
 import id.jason.kotlinexpert.model.League
-import org.jetbrains.anko.matchParent
-import org.jetbrains.anko.recyclerview.v7.recyclerView
-import org.jetbrains.anko.verticalLayout
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,11 +19,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
         supportActionBar?.title = resources.getString(R.string.actionbar_home_title)
 
         prepareData()
         addData()
-        generateView()
+        initRecyclerView()
     }
 
     private fun prepareData() {
@@ -47,13 +46,10 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun generateView() {
-        verticalLayout {
-            recyclerView {
-                lparams(width = matchParent, height = matchParent)
-                layoutManager = GridLayoutManager(context, 2)
-                adapter = LeagueViewHolderAdapter(leagues,context)
-            }
-        }
+    private fun initRecyclerView(){
+        rv_home.layoutManager = GridLayoutManager(this,2)
+        val listHeroAdapter = LeagueViewHolderAdapter(leagues, this)
+        rv_home.adapter = listHeroAdapter
     }
+
 }
