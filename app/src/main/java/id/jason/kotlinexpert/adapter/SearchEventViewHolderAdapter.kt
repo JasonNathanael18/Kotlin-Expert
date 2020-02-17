@@ -54,6 +54,8 @@ class SearchEventViewHolderAdapter :
             itemView.setOnClickListener {
                 val intentToEventDetail = Intent(itemView.context, EventDetailActivity::class.java)
                 intentToEventDetail.putExtra(Constants.IntentBundle.EVENT_ID, events.idEvent)
+                intentToEventDetail.putExtra(Constants.IntentBundle.HOME_TEAM_ID, events.idHomeTeam)
+                intentToEventDetail.putExtra(Constants.IntentBundle.AWAY_TEAM_ID, events.idAwayTeam)
                 itemView.context.startActivity(intentToEventDetail)
             }
         }

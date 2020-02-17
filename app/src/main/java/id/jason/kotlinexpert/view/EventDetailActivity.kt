@@ -6,15 +6,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import com.bumptech.glide.Glide
 import id.jason.kotlinexpert.R
 import id.jason.kotlinexpert.helper.Constants
 import id.jason.kotlinexpert.model.Events
+import id.jason.kotlinexpert.model.Team
 import id.jason.kotlinexpert.view_model.EventDetailViewModel
 import kotlinx.android.synthetic.main.activity_event_detail.*
 
 class EventDetailActivity : AppCompatActivity() {
 
     private lateinit var eventId: String
+    private lateinit var homeTeamId: String
+    private lateinit var awayTeamId: String
     private lateinit var viewModel: EventDetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,6 +26,8 @@ class EventDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_event_detail)
 
         eventId = intent.getStringExtra(Constants.IntentBundle.EVENT_ID) ?: ""
+        homeTeamId = intent.getStringExtra(Constants.IntentBundle.HOME_TEAM_ID) ?: ""
+        awayTeamId = intent.getStringExtra(Constants.IntentBundle.AWAY_TEAM_ID) ?: ""
 
         supportActionBar?.title = resources.getString(R.string.actionbar_event_detail_title)
         supportActionBar?.elevation = 0f
@@ -35,6 +41,20 @@ class EventDetailActivity : AppCompatActivity() {
 
         viewModel.getDataEventDetail().observe(this, Observer { t ->
             t?.events?.let { setData(it) }
+        })
+
+        viewModel.setDataHomeTeam(homeTeamId,this,error)
+
+        viewModel.getDataHomeTeam().observe(this, Observer {
+                t ->
+            t?.events?.let { setHomeBadge(it) }
+        })
+
+        viewModel.setDataAwayTeam(awayTeamId,this,error)
+
+        viewModel.getDataAwayTeam().observe(this, Observer {
+                t ->
+            t?.events?.let { setAwayBadge(it) }
         })
     }
 
@@ -87,5 +107,17 @@ class EventDetailActivity : AppCompatActivity() {
         tv_away_substitutes.text = events[0].strAwayLineupSubstitutes?.replace("; ", "\n") ?: ""
 
         showLoading(false)
+    }
+
+    private fun setHomeBadge(home: List<Team>){
+        Glide.with(this)
+            .load(home[0].strTeamBadge)
+            .into(home_badge)
+    }
+
+    private fun setAwayBadge(away: List<Team>){
+        Glide.with(this)
+            .load(away[0].strTeamBadge)
+            .into(away_badge)
     }
 }

@@ -41,6 +41,15 @@
             app:layout_constraintTop_toBottomOf="@id/tv_item_event_name"
             tools:text="@tools:sample/full_names" />
 
+        <ImageView
+            android:id="@+id/home_badge"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_item_home_team"
+            app:layout_constraintBottom_toBottomOf="@id/tv_item_home_team"
+            tools:src="@tools:sample/avatars" />
+
         <TextView
             android:id="@+id/tv_item_home_team"
             android:layout_width="0dp"
@@ -48,7 +57,7 @@
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@id/tv_item_score"
             app:layout_constraintEnd_toStartOf="@id/tv_item_score"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/home_badge"
             app:layout_constraintTop_toTopOf="@id/tv_item_score"
             tools:text="@tools:sample/full_names" />
 
@@ -69,10 +78,19 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             app:layout_constraintBottom_toBottomOf="@id/tv_item_score"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/away_badge"
             app:layout_constraintStart_toEndOf="@id/tv_item_score"
             app:layout_constraintTop_toBottomOf="@id/tv_item_event_date"
             tools:text="@tools:sample/first_names" />
+
+        <ImageView
+            android:id="@+id/away_badge"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/tv_item_away_team"
+            app:layout_constraintBottom_toBottomOf="@id/tv_item_away_team"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tv_status"
