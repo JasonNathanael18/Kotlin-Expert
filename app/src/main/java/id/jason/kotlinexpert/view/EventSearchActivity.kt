@@ -46,7 +46,6 @@ class EventSearchActivity : AppCompatActivity() {
                 showEmpty(true)
             } else {
                 t?.events?.let {
-                    showEmpty(false)
                     showData(it)
                 }
             }
@@ -76,8 +75,19 @@ class EventSearchActivity : AppCompatActivity() {
     }
 
     private fun showData(data: List<Event>) {
-        adapter.setData(data as ArrayList<Event>)
-        showLoading(false)
+        val dataFiltered = data.filter {
+            it.strSport == "Soccer"
+        }
+        if (dataFiltered.isNullOrEmpty()) {
+            showEmpty(true)
+            showLoading(false)
+            rv_search_event.visibility = View.GONE
+        }
+        else{
+            showEmpty(false)
+            adapter.setData(dataFiltered as ArrayList<Event>)
+            showLoading(false)
+        }
     }
 
     private fun showEmpty(state: Boolean) {

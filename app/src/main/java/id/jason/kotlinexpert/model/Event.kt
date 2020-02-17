@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 class Event (
     @SerializedName("idEvent") val idEvent: String? = null,
+    @SerializedName("strSport") val strSport: String? = null,
     @SerializedName("strEvent") val strEvent: String? = null,
     @SerializedName("strDate") val strDate: String? = null,
     @SerializedName("strHomeTeam") val strHomeTeam: String? = null,
