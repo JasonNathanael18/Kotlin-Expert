@@ -13,7 +13,7 @@ import id.jason.kotlinexpert.view.EventDetailActivity
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_event_list.*
 
-class EventsViewHolderAdapter:RecyclerView.Adapter<EventsViewHolderAdapter.EventsViewHolder>() {
+class EventsViewHolderAdapter : RecyclerView.Adapter<EventsViewHolderAdapter.EventsViewHolder>() {
     private val mData = ArrayList<Events>()
     fun setData(items: ArrayList<Events>) {
         mData.clear()
@@ -22,7 +22,8 @@ class EventsViewHolderAdapter:RecyclerView.Adapter<EventsViewHolderAdapter.Event
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_event_list, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_event_list, parent, false)
         return EventsViewHolder(view)
     }
 
@@ -44,8 +45,8 @@ class EventsViewHolderAdapter:RecyclerView.Adapter<EventsViewHolderAdapter.Event
             tv_item_event_date.text = events.strDate
             tv_item_home_team.text = events.strHomeTeam
             tv_item_away_team.text = events.strAwayTeam
-            val homeScore = events.intHomeScore?:"0"
-            val awayScore = events.intAwayScore?:"0"
+            val homeScore = events.intHomeScore ?: "0"
+            val awayScore = events.intAwayScore ?: "0"
             tv_item_score.text = "$homeScore : $awayScore"
             if (events.intHomeScore.isNullOrEmpty()) tv_status.visibility = View.INVISIBLE
 

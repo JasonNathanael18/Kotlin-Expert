@@ -41,10 +41,10 @@ class EventSearchActivity : AppCompatActivity() {
 
         viewModel.getDataSearchEvent().observe(this, Observer {
                 t ->
-            if (t?.events.isNullOrEmpty()){
+            if (t?.events.isNullOrEmpty()) {
                 showLoading(false)
                 showEmpty(true)
-            }else{
+            } else {
                 t?.events?.let {
                     showEmpty(false)
                     showData(it)

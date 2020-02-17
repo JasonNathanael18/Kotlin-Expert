@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class EventDetailViewModel: ViewModel() {
+class EventDetailViewModel : ViewModel() {
     private var eventDetailData = MutableLiveData<EventsResponse>()
 
     internal fun setDataEventDetail(

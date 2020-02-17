@@ -20,7 +20,8 @@ class LeagueViewHolderAdapter(
     RecyclerView.Adapter<LeagueViewHolderAdapter.LeagueViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LeagueViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_league_list, parent, false)
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_league_list, parent, false)
         return LeagueViewHolder(view)
     }
 

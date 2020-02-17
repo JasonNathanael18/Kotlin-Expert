@@ -3,7 +3,7 @@ package id.jason.kotlinexpert.helper
 import id.jason.kotlinexpert.BuildConfig
 
 class Constants {
-    object IntentBundle{
+    object IntentBundle {
         const val LEAGUE_ID = "league_id"
         const val EVENT_ID = "event_id"
         const val EVENT_SEARCH = "event_search"

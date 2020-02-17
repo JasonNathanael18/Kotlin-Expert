@@ -45,26 +45,25 @@ class EventFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         index = arguments?.getInt(ARG_SECTION_NUMBER, 0) as Int
-        leagueId =  arguments?.getString(LEAGUE_ID,"") as String
+        leagueId = arguments?.getString(LEAGUE_ID, "") as String
         initRecyclerView()
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(EventViewModel::class.java)
-        val error =resources.getString(R.string.error)
+        val error = resources.getString(R.string.error)
         if (arguments != null) {
-            when(index){
+            when (index) {
                 1 -> {
-                    viewModel.setDataPreviousEvent(leagueId,context,error)
+                    viewModel.setDataPreviousEvent(leagueId, context, error)
                     showLoading(true)
 
-                    viewModel.getDataPreviousEvent().observe(viewLifecycleOwner, Observer {
-                            t ->
-                        if (t?.events.isNullOrEmpty()){
+                    viewModel.getDataPreviousEvent().observe(viewLifecycleOwner, Observer { t ->
+                        if (t?.events.isNullOrEmpty()) {
                             showLoading(false)
                             showEmpty(true)
-                        }else{
+                        } else {
                             t?.events?.let {
                                 showEmpty(false)
                                 showData(it)
@@ -74,15 +73,14 @@ class EventFragment : Fragment() {
                 }
 
                 2 -> {
-                    viewModel.setDataNextEvent(leagueId,context,error)
+                    viewModel.setDataNextEvent(leagueId, context, error)
                     showLoading(true)
 
-                    viewModel.getDataNextEvent().observe(viewLifecycleOwner, Observer {
-                            t ->
-                        if (t?.events.isNullOrEmpty()){
+                    viewModel.getDataNextEvent().observe(viewLifecycleOwner, Observer { t ->
+                        if (t?.events.isNullOrEmpty()) {
                             showLoading(false)
                             showEmpty(true)
-                        }else{
+                        } else {
                             t?.events?.let {
                                 showEmpty(false)
                                 showData(it)
@@ -94,7 +92,7 @@ class EventFragment : Fragment() {
         }
     }
 
-    private fun initRecyclerView(){
+    private fun initRecyclerView() {
         adapter = EventsViewHolderAdapter()
         adapter.notifyDataSetChanged()
         rv_event.layoutManager = LinearLayoutManager(context)
@@ -117,10 +115,9 @@ class EventFragment : Fragment() {
     }
 
     private fun showEmpty(state: Boolean) {
-        if(state){
+        if (state) {
             empty_message.visibility = View.VISIBLE
             rv_event.visibility = View.GONE
-        }
-        else empty_message.visibility = View.GONE
+        } else empty_message.visibility = View.GONE
     }
 }

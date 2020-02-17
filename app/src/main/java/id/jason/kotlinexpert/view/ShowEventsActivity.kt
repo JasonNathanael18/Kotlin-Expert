@@ -57,7 +57,7 @@ class ShowEventsActivity : AppCompatActivity() {
 
     private fun goToSearch(query: String?) {
         val intent = Intent(this, EventSearchActivity::class.java)
-        intent.putExtra(Constants.IntentBundle.EVENT_SEARCH,query)
+        intent.putExtra(Constants.IntentBundle.EVENT_SEARCH, query)
         startActivity(intent)
     }
 }

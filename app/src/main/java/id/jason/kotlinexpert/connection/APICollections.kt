@@ -13,23 +13,23 @@ interface APICollections {
      * Previous Match
      */
     @GET(Constants.ApiEndPoint.PREVIOUS_MATCH)
-    fun previousMatch(@Query("id") eventId:String): Call<EventsResponse>
+    fun previousMatch(@Query("id") eventId: String): Call<EventsResponse>
 
     /**
      * Next Match
      */
     @GET(Constants.ApiEndPoint.NEXT_MATCH)
-    fun nextMatch(@Query("id") eventId:String): Call<EventsResponse>
+    fun nextMatch(@Query("id") eventId: String): Call<EventsResponse>
 
     /**
      * Match Detail
      */
     @GET(Constants.ApiEndPoint.MATCH_DETAIL)
-    fun matchDetail(@Query("id") eventId:String): Call<EventsResponse>
+    fun matchDetail(@Query("id") eventId: String): Call<EventsResponse>
 
     /**
      * Match Detail
      */
     @GET(Constants.ApiEndPoint.SEARCH_EVENT)
-    fun searchEvent(@Query("e") eventQuery:String): Call<EventResponse>
+    fun searchEvent(@Query("e") eventQuery: String): Call<EventResponse>
 }

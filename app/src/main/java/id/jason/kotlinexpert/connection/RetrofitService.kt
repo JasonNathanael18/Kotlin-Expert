@@ -28,4 +28,5 @@ class RetrofitService {
 
     fun api(): APICollections {
         return getNetwork().create(APICollections::class.java)
-    }}
+    }
+}

@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.activity_league_detail.*
 
 class LeagueDetailActivity : AppCompatActivity() {
 
-    companion object{
+    companion object {
         const val EXTRA_LEAGUE = "extra_league"
     }
 
@@ -41,10 +41,10 @@ class LeagueDetailActivity : AppCompatActivity() {
         Glide.with(this).load(detail.leagueBadge).into(iv_league_badge_detail)
     }
 
-    private fun setClickListener(){
+    private fun setClickListener() {
         btn_league_event.setOnClickListener {
             val intent = Intent(this, ShowEventsActivity::class.java)
-            intent.putExtra(Constants.IntentBundle.LEAGUE_ID,leagueDetail.leagueId)
+            intent.putExtra(Constants.IntentBundle.LEAGUE_ID, leagueDetail.leagueId)
             startActivity(intent)
         }
     }
