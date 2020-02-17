@@ -61,7 +61,15 @@ class EventFragment : Fragment() {
 
                     viewModel.getDataPreviousEvent().observe(viewLifecycleOwner, Observer {
                             t ->
-                        t?.events?.let { showData(it) }
+                        if (t?.events.isNullOrEmpty()){
+                            showLoading(false)
+                            showEmpty(true)
+                        }else{
+                            t?.events?.let {
+                                showEmpty(false)
+                                showData(it)
+                            }
+                        }
                     })
                 }
 
@@ -71,7 +79,15 @@ class EventFragment : Fragment() {
 
                     viewModel.getDataNextEvent().observe(viewLifecycleOwner, Observer {
                             t ->
-                        t?.events?.let { showData(it) }
+                        if (t?.events.isNullOrEmpty()){
+                            showLoading(false)
+                            showEmpty(true)
+                        }else{
+                            t?.events?.let {
+                                showEmpty(false)
+                                showData(it)
+                            }
+                        }
                     })
                 }
             }
@@ -98,5 +114,13 @@ class EventFragment : Fragment() {
     private fun showData(data: List<Events>) {
         adapter.setData(data as ArrayList<Events>)
         showLoading(false)
+    }
+
+    private fun showEmpty(state: Boolean) {
+        if(state){
+            empty_message.visibility = View.VISIBLE
+            rv_event.visibility = View.GONE
+        }
+        else empty_message.visibility = View.GONE
     }
 }

@@ -43,10 +43,10 @@ class EventSearchActivity : AppCompatActivity() {
                 t ->
             if (t?.events.isNullOrEmpty()){
                 showLoading(false)
-                Toast.makeText(this,"No Match Found",Toast.LENGTH_LONG).show()
+                showEmpty(true)
             }else{
                 t?.events?.let {
-                    showLoading(true)
+                    showEmpty(false)
                     showData(it)
                 }
             }
@@ -80,6 +80,14 @@ class EventSearchActivity : AppCompatActivity() {
         showLoading(false)
     }
 
+    private fun showEmpty(state: Boolean) {
+        if(state){
+            empty_message.visibility = View.VISIBLE
+            rv_search_event.visibility = View.GONE
+        }
+        else empty_message.visibility = View.GONE
+    }
+
     private fun goToSearch(query: String?) {
         if (query != null) {
             viewModel.setDataSearchEvent(query,this,error)
@@ -97,7 +105,6 @@ class EventSearchActivity : AppCompatActivity() {
         searchView.isIconified = false
         searchView.isFocusable = true
         searchView.clearFocus()
-        searchView.requestFocusFromTouch()
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextChange(p0: String?): Boolean {
@@ -105,6 +112,8 @@ class EventSearchActivity : AppCompatActivity() {
             }
 
             override fun onQueryTextSubmit(query: String?): Boolean {
+                showLoading(true)
+                showEmpty(false)
                 goToSearch(query)
                 searchView.clearFocus()
                 return true

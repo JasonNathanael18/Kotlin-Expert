@@ -13,9 +13,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view.EventSearchActivity"></activity>
-        <activity android:name=".view.EventDetailActivity" />
-        <activity android:name=".view.ShowEventsActivity" />
+
         <activity
             android:name=".view.MainActivity"
             android:screenOrientation="portrait">
@@ -28,6 +26,12 @@
         <activity
             android:name=".view.LeagueDetailActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".view.EventSearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.EventDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".view.ShowEventsActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

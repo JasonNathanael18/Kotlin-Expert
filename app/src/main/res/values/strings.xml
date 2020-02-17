@@ -3,6 +3,7 @@
     <string name="actionbar_home_title">League List</string>
     <string name="actionbar_detail_title">League Detail</string>
     <string name="actionbar_event_detail_title">Match Detail</string>
+    <string name="actionbar_event_list_title">Match List</string>
     <string name="show_league_events">Show League Events</string>
     <string name="tab_event_last_match">Last Match</string>
     <string name="tab_event_next_match">Next Match</string>
@@ -15,6 +16,7 @@
     <string name="lineup">Lineup</string>
     <string name="substitutes">Substitutes</string>
     <string name="search">Search</string>
+    <string name="no_result_found">No Result Found</string>
 
     <!--    Movie Data-->
     <string-array name="league_name_data">

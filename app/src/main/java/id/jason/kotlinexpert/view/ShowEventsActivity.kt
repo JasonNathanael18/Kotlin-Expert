@@ -20,6 +20,8 @@ class ShowEventsActivity : AppCompatActivity() {
 
         leagueId = intent.getStringExtra(Constants.IntentBundle.LEAGUE_ID) ?: ""
 
+        supportActionBar?.title = resources.getString(R.string.actionbar_event_list_title)
+
         val eventsPagerAdapter = EventsPagerAdapter(this, supportFragmentManager, leagueId)
         vp_event.adapter = eventsPagerAdapter
         tab_event.setupWithViewPager(vp_event)
@@ -46,6 +48,7 @@ class ShowEventsActivity : AppCompatActivity() {
 
             override fun onQueryTextSubmit(query: String?): Boolean {
                 goToSearch(query)
+                searchView.clearFocus()
                 return true
             }
         })
