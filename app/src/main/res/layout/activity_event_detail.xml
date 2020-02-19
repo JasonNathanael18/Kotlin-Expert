@@ -119,7 +119,15 @@
             android:text="@string/scorers"
             app:layout_constraintEnd_toEndOf="@id/guideline_event_detail"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_status" />
+            app:layout_constraintTop_toBottomOf="@id/btn_favourite" />
+
+        <ImageView
+            android:id="@+id/btn_favourite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_favorite_red_48dp"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/container_home_scorer"

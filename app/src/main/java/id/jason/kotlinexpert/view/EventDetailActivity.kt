@@ -1,17 +1,23 @@
 package id.jason.kotlinexpert.view
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import id.jason.kotlinexpert.R
 import id.jason.kotlinexpert.helper.Constants
 import id.jason.kotlinexpert.model.Events
 import id.jason.kotlinexpert.model.Team
 import id.jason.kotlinexpert.view_model.EventDetailViewModel
+import id.jason.kotlinexpert.view_model.FavouriteViewModel
 import kotlinx.android.synthetic.main.activity_event_detail.*
 
 class EventDetailActivity : AppCompatActivity() {
@@ -20,6 +26,8 @@ class EventDetailActivity : AppCompatActivity() {
     private lateinit var homeTeamId: String
     private lateinit var awayTeamId: String
     private lateinit var viewModel: EventDetailViewModel
+    private lateinit var viewModelFavourite: FavouriteViewModel
+    private var eventDetail: List<Events> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +42,8 @@ class EventDetailActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        viewModel = ViewModelProviders.of(this).get(EventDetailViewModel::class.java)
+        viewModel = ViewModelProvider(this).get(EventDetailViewModel::class.java)
+        viewModelFavourite =  ViewModelProvider(this).get(FavouriteViewModel::class.java)
         val error = resources.getString(R.string.error)
         viewModel.setDataEventDetail(eventId, this, error)
         showLoading(true)
@@ -56,6 +65,8 @@ class EventDetailActivity : AppCompatActivity() {
                 t ->
             t?.events?.let { setAwayBadge(it) }
         })
+
+        setClickListener()
     }
 
     private fun showLoading(state: Boolean) {
@@ -73,6 +84,7 @@ class EventDetailActivity : AppCompatActivity() {
 
     @SuppressLint("SetTextI18n")
     private fun setData(events: List<Events>) {
+        eventDetail = events
         tv_item_event_name.text = events[0].strEvent
         tv_item_event_date.text = events[0].strDate
         tv_item_home_team.text = events[0].strHomeTeam
@@ -119,5 +131,25 @@ class EventDetailActivity : AppCompatActivity() {
         Glide.with(this)
             .load(away[0].strTeamBadge)
             .into(away_badge)
+    }
+
+    private fun setClickListener(){
+        btn_favourite.setOnClickListener {
+            Toast.makeText(this, getString(R.string.add_to_favorite), Toast.LENGTH_LONG).show()
+            viewModelFavourite.insert(eventDetail[0])
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.menu_favourite, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.go_to_favourite) {
+            val mIntent = Intent(this,FavouriteListActivity::class.java)
+            startActivity(mIntent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

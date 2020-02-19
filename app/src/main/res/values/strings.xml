@@ -19,6 +19,9 @@
     <string name="no_result_found">No Result Found</string>
     <string name="home_team_logo">home team logo</string>
     <string name="away_team_logo">away team logo</string>
+    <string name="add_to_favorite">Match added to favourite</string>
+    <string name="favourite_menu">Favourite List</string>
+    <string name="actionbar_favourite_title">Favourite</string>
 
     <!--    Movie Data-->
     <string-array name="league_name_data">
@@ -119,4 +122,9 @@ Sky Sports currently show live League One matches with highlights shown on BBC O
         <item>@drawable/scotish_premier_league</item>
         <item>@drawable/english_league_1</item>
     </array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="no_data_found">no data found</string>
+    <string name="remove_from_favourite">Remove from favourite</string>
 </resources>

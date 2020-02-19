@@ -1,12 +1,15 @@
 package id.jason.kotlinexpert.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
+@Entity(tableName = "events_table")
 data class Events(
-    @SerializedName("idEvent") val idEvent: String? = null,
+    @PrimaryKey @SerializedName("idEvent") val idEvent: String = "",
     @SerializedName("idHomeTeam") val idHomeTeam: String? = null,
     @SerializedName("idAwayTeam") val idAwayTeam: String? = null,
     @SerializedName("strSport") val strSport: String? = null,
