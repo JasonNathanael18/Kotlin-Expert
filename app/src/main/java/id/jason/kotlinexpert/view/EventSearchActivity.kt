@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.jason.kotlinexpert.R
-import id.jason.kotlinexpert.adapter.EventsViewHolderAdapter
 import id.jason.kotlinexpert.adapter.SearchEventViewHolderAdapter
 import id.jason.kotlinexpert.helper.Constants
 import id.jason.kotlinexpert.model.Event

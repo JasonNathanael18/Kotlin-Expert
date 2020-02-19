@@ -17,6 +17,8 @@
     <string name="substitutes">Substitutes</string>
     <string name="search">Search</string>
     <string name="no_result_found">No Result Found</string>
+    <string name="home_team_logo">home team logo</string>
+    <string name="away_team_logo">away team logo</string>
 
     <!--    Movie Data-->
     <string-array name="league_name_data">

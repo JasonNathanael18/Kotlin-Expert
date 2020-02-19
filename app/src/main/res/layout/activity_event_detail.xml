@@ -48,7 +48,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_item_home_team"
             app:layout_constraintBottom_toBottomOf="@id/tv_item_home_team"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/home_team_logo"/>
 
         <TextView
             android:id="@+id/tv_item_home_team"
@@ -90,7 +91,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/tv_item_away_team"
             app:layout_constraintBottom_toBottomOf="@id/tv_item_away_team"
-            tools:src="@tools:sample/avatars" />
+            tools:src="@tools:sample/avatars"
+            android:contentDescription="@string/away_team_logo"/>
 
         <TextView
             android:id="@+id/tv_status"

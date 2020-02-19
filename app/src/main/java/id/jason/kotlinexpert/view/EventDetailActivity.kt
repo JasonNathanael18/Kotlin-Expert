@@ -94,13 +94,13 @@ class EventDetailActivity : AppCompatActivity() {
         val homeGK = events[0].strHomeLineupGoalkeeper?.replace("; ", "\n") ?: ""
         val homeDEF = events[0].strHomeLineupDefense?.replace("; ", "\n") ?: ""
         val homeMID = events[0].strHomeLineupMidfield?.replace("; ", "\n") ?: ""
-        var homeFW = events[0].strHomeLineupForward?.replace("; ", "\n") ?: ""
+        val homeFW = events[0].strHomeLineupForward?.replace("; ", "\n") ?: ""
         tv_home_lineup.text = homeGK + homeDEF + homeMID + homeFW
 
         val awayGK = events[0].strAwayLineupGoalkeeper?.replace("; ", "\n") ?: ""
         val awayDEF = events[0].strAwayLineupDefense?.replace("; ", "\n") ?: ""
         val awayMID = events[0].strAwayLineupMidfield?.replace("; ", "\n") ?: ""
-        var awayFW = events[0].strAwayLineupForward?.replace("; ", "\n") ?: ""
+        val awayFW = events[0].strAwayLineupForward?.replace("; ", "\n") ?: ""
         tv_away_lineup.text = awayGK + awayDEF + awayMID + awayFW
 
         tv_home_substitutes.text = events[0].strHomeLineupSubstitutes?.replace("; ", "\n") ?: ""

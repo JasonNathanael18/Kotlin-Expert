@@ -5,8 +5,6 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import id.jason.kotlinexpert.connection.RetrofitService
-import id.jason.kotlinexpert.helper.Constants
-import id.jason.kotlinexpert.model.Events
 import id.jason.kotlinexpert.model.EventsResponse
 import retrofit2.Call
 import retrofit2.Callback
