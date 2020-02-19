@@ -19,7 +19,7 @@ class FavouriteViewModel(application: Application) : AndroidViewModel(applicatio
         val eventDao = EventDatabase.getDatabase(application).eventDao()
         eventRepository = EventRepository(eventDao)
         allLastEvent = eventRepository.allFavouriteLastList
-        allNextEvent = eventRepository.allFavouriteLastList
+        allNextEvent = eventRepository.allFavouriteNextList
     }
 
     fun insert(events: Events) = viewModelScope.launch {
